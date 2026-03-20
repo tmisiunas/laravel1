@@ -24,7 +24,7 @@
 
 <body class="bg-white text-black">
 
-<header class="w-full text-sm mb-6">
+<header class="w-full text-sm mb-6" style="margin-top: 20px;">
     @include('partials.header')
 </header>
 
