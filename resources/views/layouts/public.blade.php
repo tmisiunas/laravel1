@@ -24,11 +24,15 @@
 
 <body class="bg-white text-black">
 
-<header class="w-full text-sm mb-6" style="margin-top: 20px;">
+<div class="max-w-4xl mx-auto p-6">
+
+<header class="w-full text-sm mb-6 mt-6">
     @include('partials.header')
 </header>
 
 @yield('content')
+
+</div>
 
 </body>
 
