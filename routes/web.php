@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SportController;
 
 //Route::view('/', 'welcome')->name('home');
 Route::view('/', 'home')->name('home');
@@ -17,5 +18,7 @@ Route::get('/aaa', function () {
 Route::get('/bbb', function () {
     return view('bbb');
 })->name('bbb');
+
+Route::get('/sports', [SportController::class, 'index'])->name('sports.index');
 
 require __DIR__.'/settings.php';
