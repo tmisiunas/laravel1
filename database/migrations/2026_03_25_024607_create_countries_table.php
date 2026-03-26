@@ -16,6 +16,11 @@ return new class extends Migration
             $table->string('name');
             $table->timestamps();
         });
+
+        Schema::table('countries', function (Blueprint $table) {
+            $table->unique('name');
+        });
+
     }
     /**
      * Reverse the migrations.
@@ -23,5 +28,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('countries');
+        Schema::table('countries', function (Blueprint $table) {
+            $table->dropUnique(['name']);
+        });
     }
 };

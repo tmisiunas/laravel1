@@ -16,12 +16,19 @@ return new class extends Migration
             $table->string('type');
             $table->timestamps();
         });
+        Schema::table('participant_types', function (Blueprint $table) {
+            $table->unique('type');
+        });
     }
+
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
         Schema::dropIfExists('participant_types');
+        Schema::table('participant_types', function (Blueprint $table) {
+            $table->dropUnique(['type']);
+        });
     }
 };
