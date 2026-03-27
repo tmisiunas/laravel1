@@ -10,6 +10,16 @@ use Illuminate\Http\Request;
 
 class ParticipantController extends Controller
 {
+    public function index()
+    {
+        $participants = \App\Models\Participant::with([
+            'country',
+            'sport',
+            'participantType'
+        ])->get();
+
+        return view('participants.index', compact('participants'));
+    }
     public function create()
     {
         return view('participants.create', [
@@ -28,6 +38,8 @@ class ParticipantController extends Controller
             'participant_type_id' => $request->participant_type_id,
         ]);
 
-        return redirect()->back();
+        return redirect()
+            ->route('participants.index')
+            ->with('success', 'Participant added!');
     }
 }
