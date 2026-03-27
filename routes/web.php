@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SportController;
+use App\Http\Controllers\ParticipantController;
 
 //Route::view('/', 'welcome')->name('home');
 Route::view('/', 'home')->name('home');
@@ -20,5 +21,8 @@ Route::get('/bbb', function () {
 })->name('bbb');
 
 Route::get('/sports', [SportController::class, 'index'])->name('sports.index');
+
+Route::get('/participants/create', [ParticipantController::class, 'create'])->name('participants.create');
+Route::post('/participants', [ParticipantController::class, 'store'])->name('participants.store');
 
 require __DIR__.'/settings.php';
