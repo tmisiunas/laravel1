@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SportController;
 use App\Http\Controllers\ParticipantController;
 use App\Http\Controllers\CountryController;
+use App\Http\Controllers\EventController;
+
+require __DIR__.'/settings.php';
 
 //Route::view('/', 'welcome')->name('home');
 Route::view('/', 'home')->name('home');
@@ -20,4 +23,7 @@ Route::get('/participants/create', [ParticipantController::class, 'create'])->na
 Route::post('/participants', [ParticipantController::class, 'store'])->name('participants.store');
 Route::get('/participants', [ParticipantController::class, 'index'])->name('participants.index');
 
-require __DIR__.'/settings.php';
+Route::get('/events/create', [EventController::class, 'create'])->name('events.create');
+Route::post('/events', [EventController::class, 'store'])->name('events.store');
+Route::get('/events', [EventController::class, 'index'])->name('events.index');
+
