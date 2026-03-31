@@ -12,15 +12,15 @@ class EventController extends Controller
 {
     public function index()
     {
-        $events = \App\Models\Event::with([
-            'id',
-            'sport_id',
-            'contest_id'
+        $events = Event::with([
+            'sport',
+            'contest',
+            'participant1',
+            'participant2'
         ])->get();
 
         return view('events.index', compact('events'));
     }
-
     public function create()
     {
         return view('events.create', [
