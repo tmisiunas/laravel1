@@ -11,9 +11,17 @@ require __DIR__.'/settings.php';
 //Route::view('/', 'welcome')->name('home');
 Route::view('/', 'home')->name('home');
 
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::view('dashboard', 'dashboard')->name('dashboard');
-});
+//Route::middleware(['auth', 'verified'])->group(function () {
+//    Route::view('dashboard', 'dashboard')->name('dashboard');
+//});
+
+//Route::get('/dashboard', function () {
+//    return view('dashboard');
+//})->middleware(['auth', 'admin']);
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'admin'])->name('dashboard');
 
 Route::get('/sports', [SportController::class, 'index'])->name('sports.index');
 
