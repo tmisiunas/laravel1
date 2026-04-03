@@ -29,4 +29,10 @@
     >
         Login
     </a>
+    <form method="POST" action="{{ route('logout') }}" style="display:inline;">
+        @csrf
+        <button type="submit" style="background:none;border:none;color:blue;cursor:pointer;">
+            Logout
+        </button>
+    </form>
 </nav>

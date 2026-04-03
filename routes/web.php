@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
 use App\Http\Controllers\SportController;
 use App\Http\Controllers\ParticipantController;
 use App\Http\Controllers\CountryController;
@@ -8,20 +10,22 @@ use App\Http\Controllers\EventController;
 
 require __DIR__.'/settings.php';
 
-//Route::view('/', 'welcome')->name('home');
 Route::view('/', 'home')->name('home');
 
-//Route::middleware(['auth', 'verified'])->group(function () {
-//    Route::view('dashboard', 'dashboard')->name('dashboard');
-//});
-
-//Route::get('/dashboard', function () {
-//    return view('dashboard');
-//})->middleware(['auth', 'admin']);
-
 Route::get('/dashboard', function () {
+    if (auth()->user()->role !== 'admin') {
+        return redirect()->route('home'); // 👈 prevent 403
+    }
+
     return view('dashboard');
-})->middleware(['auth', 'admin'])->name('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+Route::post('/logout', function () {
+    Auth::logout();
+    request()->session()->invalidate();
+    request()->session()->regenerateToken();
+    return redirect('/');
+})->name('logout');
 
 Route::get('/sports', [SportController::class, 'index'])->name('sports.index');
 
