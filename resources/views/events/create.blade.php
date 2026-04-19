@@ -27,6 +27,18 @@
 
         <br><br>
 
+        <!-- Event type -->
+        <select name="event_type_id" id="event_type_id" class="form-control">
+            <option value="">-- Select type --</option>
+            @foreach($eventTypes as $type)
+                <option value="{{ $type->id }}">
+                    {{ $type->event_type }}
+                </option>
+            @endforeach
+        </select>
+
+        <br><br>
+
         <!-- Participant 1 -->
         <select name="participant1_id">
             <option value="">Participant 1</option>

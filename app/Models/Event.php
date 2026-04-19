@@ -15,6 +15,7 @@ class Event extends Model
         'participant1_id',
         'participant2_id',
         'event_start_time',
+        'event_type_id',
         'value',
         'result',
         'result_text',

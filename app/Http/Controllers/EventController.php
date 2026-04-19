@@ -7,6 +7,7 @@ use App\Models\Event;
 use App\Models\Sport;
 use App\Models\Contest;
 use App\Models\Participant;
+use App\Models\EventType;
 
 class EventController extends Controller
 {
@@ -26,6 +27,7 @@ class EventController extends Controller
         return view('events.create', [
             'sports' => Sport::all(),
             'contests' => Contest::all(),
+            'eventTypes' => EventType::all(),
             'participants' => Participant::all(),
         ]);
     }
@@ -33,6 +35,7 @@ class EventController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'event_type_id' => 'required',
             'sport_id' => 'required',
             'contest_id' => 'required',
             'participant1_id' => 'required|different:participant2_id',
