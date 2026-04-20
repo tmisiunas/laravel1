@@ -52,4 +52,9 @@ class Event extends Model
     {
         return $this->belongsTo(Participant::class, 'participant2_id');
     }
+    public function bets()
+    {
+        return $this->hasMany(Bet::class);
+    }
+
 }
