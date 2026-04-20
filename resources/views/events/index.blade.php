@@ -1,31 +1,43 @@
 @extends('layouts.public')
 
-@if(session('success'))
-    <p>{{ session('success') }}</p>
-@endif
-
 @section('content')
-    <h1>Events List</h1>
-    <table border="1" cellpadding="5">
-        <tr>
-            <th>Id</th>
-            <th>Sport</th>
-            <th>Contest</th>
-            <th>Start time</th>
-            <th>Participant 1</th>
-            <th>Participant 2</th>
-        </tr>
 
-        @foreach($events as $e)
+    @if(session('success'))
+        <p class="mb-4 text-green-600 font-semibold">
+            {{ session('success') }}
+        </p>
+    @endif
+
+    <h1 class="text-xl font-semibold mb-4">Events List</h1>
+
+    <div class="max-w-5xl mx-auto mt-6">
+        <table class="min-w-full border border-gray-200 rounded-lg overflow-hidden">
+            <thead class="bg-gray-100">
             <tr>
-                <td>{{ $e->id }}</td>
-                <td>{{ $e->sport->sport }}</td>
-                <td>{{ $e->contest->name }}</td>
-                <td>{{ $e->event_start_time }}</td>
-                <td>{{ $e->participant1->participant }}</td>
-                <td>{{ $e->participant2->participant }}</td>
+                <th class="px-10 py-2 text-left text-sm font-medium">Id</th>
+                <th class="px-10 py-2 text-left text-sm font-medium">Sport</th>
+                <th class="px-10 py-2 text-left text-sm font-medium">Contest</th>
+                <th class="px-10 py-2 text-left text-sm font-medium">Start time</th>
+                <th class="px-10 py-2 text-left text-sm font-medium">Participant 1</th>
+                <th class="px-10 py-2 text-left text-sm font-medium">Participant 2</th>
             </tr>
-        @endforeach
-    </table>
-@endsection
+            </thead>
 
+            <tbody class="bg-white">
+            @foreach($events as $e)
+                <tr class="border-t odd:bg-white even:bg-gray-50 hover:bg-gray-100">
+                    <td class="px-10 py-2">{{ $e->id }}</td>
+                    <td class="px-10 py-2">{{ $e->sport->sport }}</td>
+                    <td class="px-10 py-2">{{ $e->contest->name }}</td>
+                    <td class="px-10 py-2">
+                        {{ \Carbon\Carbon::parse($e->event_start_time)->format('Y-m-d H:i') }}
+                    </td>
+                    <td class="px-10 py-2">{{ $e->participant1->participant }}</td>
+                    <td class="px-10 py-2">{{ $e->participant2->participant }}</td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    </div>
+
+@endsection
