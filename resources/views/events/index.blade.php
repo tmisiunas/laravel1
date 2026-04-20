@@ -11,9 +11,9 @@
     <h1 class="text-xl font-semibold mb-4">Events List</h1>
 
     <div class="max-w-5xl mx-auto mt-6">
-        <table class="min-w-full border border-gray-200 rounded-lg overflow-hidden">
-            <thead class="bg-gray-100">
-            <tr>
+        <table class="min-w-full rounded-lg overflow-hidden">
+            <thead class="bg-neutral-100">
+            <tr class="border-t odd:bg-white even:bg-gray-50 hover:bg-gray-100">
                 <th class="px-10 py-2 text-left text-sm font-medium">Id</th>
                 <th class="px-10 py-2 text-left text-sm font-medium">Sport</th>
                 <th class="px-10 py-2 text-left text-sm font-medium">Contest</th>
@@ -23,9 +23,9 @@
             </tr>
             </thead>
 
-            <tbody class="bg-white">
+            <tbody>
             @foreach($events as $e)
-                <tr class="border-t odd:bg-white even:bg-gray-50 hover:bg-gray-100">
+                <tr>
                     <td class="px-10 py-2">{{ $e->id }}</td>
                     <td class="px-10 py-2">{{ $e->sport->sport }}</td>
                     <td class="px-10 py-2">{{ $e->contest->name }}</td>
