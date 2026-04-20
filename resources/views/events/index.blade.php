@@ -25,7 +25,7 @@
 
             <tbody>
             @foreach($events as $e)
-                <tr>
+                <tr class="odd:bg-neutral-primary even:bg-red border-b border-default">
                     <td class="px-10 py-2">{{ $e->id }}</td>
                     <td class="px-10 py-2">{{ $e->sport->sport }}</td>
                     <td class="px-10 py-2">{{ $e->contest->name }}</td>
