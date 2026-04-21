@@ -7,6 +7,7 @@ use App\Http\Controllers\SportController;
 use App\Http\Controllers\ParticipantController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\BetController;
 
 require __DIR__.'/settings.php';
 
@@ -38,4 +39,7 @@ Route::get('/participants', [ParticipantController::class, 'index'])->name('part
 Route::get('/events/create', [EventController::class, 'create'])->name('events.create');
 Route::post('/events', [EventController::class, 'store'])->name('events.store');
 Route::get('/events', [EventController::class, 'index'])->name('events.index');
+
+Route::post('/bets', [BetController::class, 'store'])->name('bets.store');
+
 
