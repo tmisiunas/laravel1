@@ -43,4 +43,10 @@ class Participant extends Model
     {
         return $this->belongsTo(ParticipantType::class);
     }
+
+    public function rankBets()
+    {
+        return $this->hasMany(RankBet::class);
+    }
+
 }

@@ -57,4 +57,9 @@ class Event extends Model
         return $this->hasMany(Bet::class);
     }
 
+    public function rankBets()
+    {
+        return $this->hasMany(RankBet::class);
+    }
+
 }
